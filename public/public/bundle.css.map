@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../App.svelte",
+    "../Hello.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\timport Hello from \"./Hello.svelte\";\n</script>\n\n<style>\n  main {\n    font-family: sans-serif;\n    text-align: center;\n  }\n</style>\n\n<main>\n\t<h1>Hello Flow + Svelte</h1>\n\t<Hello />\n</main>",
+    "<script>\n\t\t\t\timport * as fcl from \"@onflow/fcl\";\n\t\t\t\tfcl.config().put(\"accessNode.api\", \"https://access-testnet.onflow.org\");\n\n\t\t\t\tlet message = \"\";\n\n\t\t\t\tasync function handleClick() {\n\t\t\t\t  message = \"Waiting for Flow ...\";\n\t\t\t\t  message = await fcl.query({\n\t\t\t\t    cadence: `\n\t\t\t\t\t\t\t\t\t\t\tpub fun main(): String {\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\treturn \"Hello from Flow!\";\n\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t`\n\t\t\t\t  });\n\t\t\t\t}\n</script>\n\n<style>\n\tbutton {\n\t  background: #ff3e00;\n\t  color: white;\n\t  border: none;\n\t  padding: 8px 12px;\n\t  border-radius: 2px;\n\t}\n\n\t.clicked {\n\t  background: green;\n\t}\n</style>\n\n<button  class:clicked={message} on:click={handleClick} disabled={message}>\n  { message ? \"Well done!\" : \"Click this\" }\n</button>\n\n<div style=\"margin-top:1rem\">\n\t{message}\n</div>"
+  ],
+  "names": [],
+  "mappings": "AAKE,IAAI,eAAC,CAAC,AACJ,WAAW,CAAE,UAAU,CACvB,UAAU,CAAE,MAAM,AACpB,CAAC;ACWF,MAAM,eAAC,CAAC,AACN,UAAU,CAAE,OAAO,CACnB,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,IAAI,CACZ,OAAO,CAAE,GAAG,CAAC,IAAI,CACjB,aAAa,CAAE,GAAG,AACpB,CAAC,AAED,QAAQ,eAAC,CAAC,AACR,UAAU,CAAE,KAAK,AACnB,CAAC"
+}
